@@ -77,5 +77,9 @@ class UserController < ApplicationController
 		return
 	end
 
+	def validate
+		puts params[:username]
+		puts params[:password]
+	end
 
 end

@@ -16,8 +16,11 @@ class HomeController < ApplicationController
        if session[:key] == "doc"
          redirect_to '/doc/login'
          return
-       else
-         redirect_to '/user/login'
+       elsif session[:key] == "chem"
+         redirect_to '/chem/login'
+         return
+       elsif session[:key] == "user"
+        redirect_to '/user/login'
          return
        end
     end
@@ -33,19 +36,26 @@ class HomeController < ApplicationController
   def find
 
   end
-
+  $use = nil
+  $pr = nil
   def find_p
 
 
-  	@user = User.find_by_adhNo(params['p_adhNo'])
-  	@pres = Press.find_by_p_adhNo(params['p_adhNo'])
+  	$use= User.find_by_adhNo(params['p_adhNo'])
+
+
+  	$pr= Press.where(p_adhNo: params['p_adhNo'])
 
   	redirect_to '/patient_pres'
 
   end
 
   def patient_pres
-
+    @useru = $use 
+    @pres = $pr 
+    puts "","","harami minku",@pres,@pres.first 
   end
+
+
 
 end

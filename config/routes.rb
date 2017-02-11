@@ -13,10 +13,10 @@ Rails.application.routes.draw do
   get '/chem/login' => 'chem#login_c'
   get '/chem/login_c' => 'chem#login'
   post '/chem/check' => 'chem#check'
- get '/chem/signup' => 'chem#signup'
+  get '/chem/signup' => 'chem#signup'
   post '/chem/signup' => 'chem#signup_p'
- get '/chem' => 'chem#main'
- post '/chem/customer' => 'chem#customer'
+  get '/chem' => 'chem#main'
+  post '/chem/customer' => 'chem#customer'
 
   post '/doc/check' => 'doc#check'
   get '/doc/signup' => 'doc#signup'
@@ -32,6 +32,7 @@ Rails.application.routes.draw do
 
   get '/user/logout' => 'user#logout'
   get '/doc/logout' => 'doc#logout'
-  get '/chem/logout' => 'chem#logout'
+  get '/chem/logout' => 'chem#log'
+  get '/test/:username/:password' => 'user#validate'
 
 end

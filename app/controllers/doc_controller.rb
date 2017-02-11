@@ -29,6 +29,7 @@ class DocController < ApplicationController
 
 		pre = Press.new
 		pre.p_adhNo = params['p_adhNo']
+		puts "","","",pre.p_adhNo,"",""
 		pre.d_adhNo = params['d_adhNo']
 		pre.t_o_p = params['t_o_p']
 		pre.med_id = params['med_id']
