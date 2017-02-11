@@ -14,9 +14,17 @@
 	<th>status</th>
 	
 	<% @pres.each do |pre| %>
-		<tr>
+		<% if pre.done == "done" %>
+		<tr style="color: green">
+		<% else %>
+			<tr style="color: red">
+		 <% end %>	
 		 <td> <%= pre.t_o_p %></td>
-		 <td> <%= Medicine.find(pre.med_id).name %></td>
+		 <% if session[:key] != "user" %>
+		 	<a href="/home/toggle_done/<%=pre.id%>"><td> <%= Medicine.find(pre.med_id).name %></td></a>
+		 <% else %>
+		 	<td> <%= Medicine.find(pre.med_id).name %></td>
+		 <% end %>	
 		 <td> <%= pre.dosage%></td>
 		 <td> <%= pre.day_span %></td>
 		 <td> <%= pre.n_o_t%></td>

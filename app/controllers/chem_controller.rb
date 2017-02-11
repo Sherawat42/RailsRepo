@@ -25,7 +25,8 @@ class ChemController < ApplicationController
 	end
 
 	def main
-	
+		redirect_to '/home/find'
+		return
 	end
 
 	def check
@@ -75,11 +76,10 @@ class ChemController < ApplicationController
 		chem.save
 		session[:id]=chem.id
 		session[:key]="chem"
-		redirect_to '/user'
+		redirect_to '/chem'
 		return
 	end
 
-
-
+	
 
 end

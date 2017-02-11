@@ -1,5 +1,14 @@
 class HomeController < ApplicationController
   
+
+  def toggle_done
+
+    pre = Press.find(params[:id])
+    pre.done = "done"
+    redirect_to '/patient_pres'
+  end
+
+
   def check
 
     if session[:key]
