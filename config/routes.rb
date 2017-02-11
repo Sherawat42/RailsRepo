@@ -35,4 +35,5 @@ Rails.application.routes.draw do
   get '/chem/logout' => 'chem#log'
   get '/test/:username/:password' => 'user#validate'
 
+
 end

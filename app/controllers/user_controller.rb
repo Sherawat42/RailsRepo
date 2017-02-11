@@ -78,8 +78,8 @@ class UserController < ApplicationController
 	end
 
 	def validate
-		puts params[:username]
-		puts params[:password]
+		puts "","","",params[:username],"","",""
+		return redirect_to '/user'
 	end
 
 end
