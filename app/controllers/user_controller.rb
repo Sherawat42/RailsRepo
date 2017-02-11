@@ -1,5 +1,24 @@
 class UserController < ApplicationController
 
+
+	def logout
+		session[:id]=nil
+		session[:key]=nil
+		redirect_to '/'
+		return
+	end
+
+	def login_c
+		if session[:id]
+			redirect_to '/user'
+			return
+		end
+
+		redirect_to '/user/login_c'
+		return
+	end
+
+
 	def login
 	
 	end
@@ -16,6 +35,7 @@ class UserController < ApplicationController
 
 		if user 
 			session[:id] = user.id
+			session[:key]= "user"
 			redirect_to '/user'
 			return
 		end
@@ -46,11 +66,13 @@ class UserController < ApplicationController
 		user.pass = pass
 		#doc.hospital = params['hospital']
 		#doc.spec = params['spec']
-		#doc.name = params['name']
+		user.name = params['name']
 		#doc.save
 		user.dob=params['dob']
 		user.gender=params['gender']
+		user.save
 		session[:id]=user.id
+		session[:key]="user"
 		redirect_to '/user'
 		return
 	end

@@ -1,0 +1,29 @@
+
+<% if @user %>
+<%= @user.name %>
+<%= @user.dob %>
+<%= @user.gender%>
+<table>
+	<th>time of prescription</th>
+	<th>medicine</th>
+	<th>dosage</th>
+	<th>day_span</th>
+
+	<th>n_o_t</th>
+	<th>special </th>
+	<th>status</th>
+	
+	<% @pres.each do |pre| %>
+		<tr>
+		 <td> <%= pre.t_o_p %></td>
+		 <td> <%= Medicine.find(pre.med_id).name %></td>
+		 <td> <%= pre.dosage%></td>
+		 <td> <%= pre.day_span %></td>
+		 <td> <%= pre.n_o_t%></td>
+		 <td> <%= pre.spl_rm %></td>
+		 <td> <%= pre.success %></td>
+		</tr>
+	<% end%>  
+
+</table>
+<% end%>

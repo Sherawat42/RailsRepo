@@ -1,11 +1,45 @@
 class DocController < ApplicationController
 
+	def login_c
+		if session[:id]
+			redirect_to '/doc'
+			return
+		end
+
+		redirect_to '/doc/login_c'
+		return
+	end
+
+	def logout
+		session[:id]=nil
+		session[:key]=nil
+		redirect_to '/'
+		return
+	end
+
 	def login
 	
 	end
 
 	def main
 	
+	end
+
+	def pres
+
+		pre = Press.new
+		pre.p_adhNo = params['p_adhNo']
+		pre.d_adhNo = params['d_adhNo']
+		pre.t_o_p = params['t_o_p']
+		pre.med_id = params['med_id']
+		pre.dosage = params['dosage']
+		pre.day_span = params['day_span']
+		pre.n_o_t = params['n_o_t']
+		pre.spl_rm = params['spl_rm']
+		pre.success = params['success']
+		pre.save
+		redirect_to '/doc'
+		return
 	end
 
 	def check
@@ -16,6 +50,7 @@ class DocController < ApplicationController
 
 		if doc 
 			session[:id] = doc.id
+			session[:key] = "doc"
 			redirect_to '/doc'
 			return
 		end
@@ -49,6 +84,7 @@ class DocController < ApplicationController
 		doc.name = params['name']
 		doc.save
 		session[:id]=doc.id
+		session[:key]="doc"
 		redirect_to '/doc'
 		return
 	end

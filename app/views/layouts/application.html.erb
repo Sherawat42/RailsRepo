@@ -7,7 +7,15 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-
+<% if session[:id] %> 
+	<% if session[:key]=="user" %>
+  		<a href="/user/logout">logout user</a>
+	<% elsif session[:key]=="doc"%>
+		<a href="/doc/logout">logout doc</a>
+	<% else %>
+		<a href="/chem/logout">logout chem</a>
+	<% end %>
+<% end %>	
 <%= yield %>
 
 </body>

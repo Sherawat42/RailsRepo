@@ -1,10 +1,21 @@
 <h4>doc succesfull</h4>
-
+To do : add success message!!
 <!-- sddtu01@gmail.com doctor is able to see the records of his patients  -->
 
-<form>
+<a href="/home/find">search a perticular patient</a>
+
+
+<form method="POST" action="/doc/pres">
 	
 	<input type="text" name="p_adhNo" placeholder="enter the patients aadhar number" >
-	<input type="text">
+	<input type="hidden" name="d_adhNo" value="<%= Doctor.find(session[:id]).id %>">
+	<input type="hidden" name="t_o_p" value="<% Time.now %>">
+	<input type="text" name="med_id" placeholder="medicine id">
+	<input type="text" name="dosage" placeholder="enter the dossage" >
+	<input type="text" name="day_span" placeholder="enter the span">
+	<input type="text" name="n_o_t" placeholder="number of times">
+	<input type="text" name="spl_rm" placeholder="special remarks">
+    <input type="hidden" name="success" value="to be decided">
+    <input type="submit" >
 
 </form>
